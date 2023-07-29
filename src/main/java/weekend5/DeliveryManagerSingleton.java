@@ -22,7 +22,7 @@ public enum DeliveryManagerSingleton {
     }
 
     public void readFileAndSetDeliveryInfoMap(){
-        try(BufferedReader fis = new BufferedReader(new FileReader("src/mission/inputs/nike-sneaker-delivery-infos.txt"))){
+        try(BufferedReader fis = new BufferedReader(new FileReader("src/main/java/weekend5/inputs/nike-sneaker-delivery-infos.txt"))){
 
             String line;
             while(true){
@@ -65,7 +65,7 @@ public enum DeliveryManagerSingleton {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         // 7-6-2-5: '배송 담당자'은 '자신의 배송기록표'에 '배송완료|{운동화 모델명}|{배송료 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/delivery-manager-record.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/delivery-manager-record.txt", true))
         ) {
             bw.append(String.format("DELIVERY_DONE|%s|%d|%s|%s|%s", sneakersModelName, payment, customerLevel, customerName, dateTime));
             bw.newLine();
@@ -83,7 +83,7 @@ public enum DeliveryManagerSingleton {
     public void saveTodaySales() {
         // 8-2. '배송 담당자'는 'today-sales.txt'에 금일 매상을 'delivery-manager | {자신의 매상}'으로 기록합니다.
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/today-sales.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/today-sales.txt", true))
         ) {
             bw.append(String.format("delivery-manager|%d", salesAmount));
             bw.newLine();

@@ -25,7 +25,7 @@ public enum StaffSingleton {
     }
 
     public void readFileAndSetSneakerInfoMap() {
-        try (BufferedReader fis = new BufferedReader(new FileReader("src/mission/inputs/nike-sneaker-characters.txt"))) {
+        try (BufferedReader fis = new BufferedReader(new FileReader("src/main/java/weekend5/inputs/nike-sneaker-characters.txt"))) {
 
             String line;
             while (true) {
@@ -47,7 +47,7 @@ public enum StaffSingleton {
     }
 
     public void readFileAndSetSneakersStockMap() {
-        try (BufferedReader fis = new BufferedReader(new FileReader("src/mission/inputs/nike-sneaker-stocks.txt"))) {
+        try (BufferedReader fis = new BufferedReader(new FileReader("src/main/java/weekend5/inputs/nike-sneaker-stocks.txt"))) {
 
             String line;
             while (true) {
@@ -84,7 +84,7 @@ public enum StaffSingleton {
         String customerName = customer.getName();
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/staff-sales.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/staff-sales.txt", true))
         ) {
             bw.append(String.format("%s|%s|%d|%s|%s|%s", identity, sneakersModelName, payment, customerLevel, customerName, dateTime));
             bw.newLine();
@@ -121,7 +121,7 @@ public enum StaffSingleton {
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         // 7-6-1-2: '매장 직원'은 '자신의 매출전표'에 '환불|{운동화 모델명}|{운동화 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/staff-sales.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/staff-sales.txt", true))
         ) {
             bw.append(String.format("REFOUND|%s|%d|%s|%s|%s", sneakersModelName, payment, customerLevel, customerName, dateTime));
             bw.newLine();
@@ -142,7 +142,7 @@ public enum StaffSingleton {
     public void saveTodaySales() {
         // 8-1. '매장 직원'은 'today-sales.txt'에 금일 매상 'staff | {자신의 매상}'으로 기록합니다.
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/today-sales.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/today-sales.txt", true))
         ) {
             bw.append(String.format("staff|%d", salesAmount));
             bw.newLine();
@@ -153,7 +153,7 @@ public enum StaffSingleton {
 
     public void saveSneakersStocks() {
         try (
-                BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/nike-sneaker-stocks-2.txt", true))
+                BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/java/weekend5/outputs/nike-sneaker-stocks-2.txt", true))
         ) {
             sneakersStockMap.forEach((sneakersModelName, stock)->{
                 try {
