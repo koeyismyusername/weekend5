@@ -9,8 +9,8 @@ public class OrderSneakersSituationV2 {
         Scanner scanner = new Scanner(System.in);
         final long TODAY_START_SALES_AMOUNT = 0;
 
-        Staff staff = new Staff(TODAY_START_SALES_AMOUNT);
-        DeliveryManager deliveryManager = new DeliveryManager(TODAY_START_SALES_AMOUNT);
+        StaffSingleton staff = StaffSingleton.INSTANCE;
+        DeliveryManagerSingleton deliveryManager = DeliveryManagerSingleton.INSTANCE;
 
         staff.readFileAndSetSneakerInfoMap();
         staff.readFileAndSetSneakersStockMap();
@@ -147,11 +147,11 @@ public class OrderSneakersSituationV2 {
             staff.giveSneakers(customer, sneakersInfo);
         }
 
-        // TODO: 8. '매장 직원'과 '배송 담당자'는 'Nike 운동화' 금일 정산을 진행합니다.
+        // '매장 직원'과 '배송 담당자'는 'Nike 운동화' 금일 정산을 진행합니다.
         staff.saveTodaySales();
         deliveryManager.saveTodaySales();
 
-        // TODO: 9. '매장 직원'이 정산 후 남은 재고 현황을 기록합니다.
+        // 9. '매장 직원'이 정산 후 남은 재고 현황을 기록합니다.
         staff.saveSneakersStocks();
     }
 }

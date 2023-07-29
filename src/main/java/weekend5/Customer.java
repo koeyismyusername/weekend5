@@ -33,12 +33,12 @@ public class Customer {
     }
 
     public boolean canPay(long payment) { return cache >= payment; }
-    public long pay(Staff staff, long payment) {
+    public long pay(StaffSingleton staff, long payment) {
         cache -= payment;
         staff.receivePayment(payment);
         return payment;
     }
-    public long pay(DeliveryManager deliveryManager, long payment) {
+    public long pay(DeliveryManagerSingleton deliveryManager, long payment) {
         cache -= payment;
         deliveryManager.recivePayment(payment);
         return payment;

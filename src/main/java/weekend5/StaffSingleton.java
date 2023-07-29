@@ -1,19 +1,23 @@
-/*
 package weekend5;
 
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class Staff {
+public enum StaffSingleton {
+    INSTANCE(0);
+    private static final long TODAY_START_SALES_AMOUNT = 0;
     private Map<String, SneakersInfo> sneakersInfoMap;
     private Map<String, Long> sneakersStockMap;
 
     private List<SaleInfo> saleInfoList;
     private long salesAmount;
 
-    public Staff(long salesAmount) {
+    StaffSingleton(long salesAmount){
         this.sneakersInfoMap = new HashMap<>();
         this.sneakersStockMap = new HashMap<>();
         this.saleInfoList = new ArrayList<>();
@@ -71,9 +75,9 @@ public class Staff {
     }
 
     public void saleSneakers(Customer customer, SneakersInfo sneakersInfo, long payment, boolean useDelivery) {
-        //customer.pay(this, payment);
+        customer.pay(this, payment);
 
-        // TODO: 5-1-4: '매장 직원'은 '자신의 매출전표'에 '판매|{운동화 모델명}|{운동화 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
+        // 5-1-4: '매장 직원'은 '자신의 매출전표'에 '판매|{운동화 모델명}|{운동화 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
         String identity = useDelivery ? "DELIVERY" : "SALE";
         String sneakersModelName = sneakersInfo.getModelName();
         String customerLevel = customer.getLevel().name();
@@ -136,7 +140,7 @@ public class Staff {
     }
 
     public void saveTodaySales() {
-        // TODO: 8-1. '매장 직원'은 'today-sales.txt'에 금일 매상 'staff | {자신의 매상}'으로 기록합니다.
+        // 8-1. '매장 직원'은 'today-sales.txt'에 금일 매상 'staff | {자신의 매상}'으로 기록합니다.
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/today-sales.txt", true))
         ) {
@@ -164,4 +168,4 @@ public class Staff {
             e.printStackTrace();
         }
     }
-}*/
+}

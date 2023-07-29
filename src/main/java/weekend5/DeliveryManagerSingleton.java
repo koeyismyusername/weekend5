@@ -1,5 +1,8 @@
-/*
 package weekend5;
+
+import weekend5.Customer;
+import weekend5.DeliveryInfo;
+import weekend5.SneakersInfo;
 
 import java.io.*;
 import java.time.LocalDateTime;
@@ -7,14 +10,17 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DeliveryManager {
+public enum DeliveryManagerSingleton {
+    INSTANCE(0);
+
     private Map<String, DeliveryInfo> deliveryInfoMap;
     private long salesAmount;
 
-    public DeliveryManager(long salesAmount) {
+    DeliveryManagerSingleton(long salesAmount) {
         this.salesAmount = salesAmount;
         this.deliveryInfoMap = new HashMap<>();
     }
+
     public void readFileAndSetDeliveryInfoMap(){
         try(BufferedReader fis = new BufferedReader(new FileReader("src/mission/inputs/nike-sneaker-delivery-infos.txt"))){
 
@@ -57,7 +63,7 @@ public class DeliveryManager {
         String customerLevel = customer.getLevel().name();
         String customerName = customer.getName();
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        // TODO: 7-6-2-5: '배송 담당자'은 '자신의 배송기록표'에 '배송완료|{운동화 모델명}|{배송료 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
+        // 7-6-2-5: '배송 담당자'은 '자신의 배송기록표'에 '배송완료|{운동화 모델명}|{배송료 가격}|{손님 등급}|{손님 이름}|{현재시각}'을 입력합니다.
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/delivery-manager-record.txt", true))
         ) {
@@ -75,7 +81,7 @@ public class DeliveryManager {
     }
 
     public void saveTodaySales() {
-        // TODO: 8-2. '배송 담당자'는 'today-sales.txt'에 금일 매상을 'delivery-manager | {자신의 매상}'으로 기록합니다.
+        // 8-2. '배송 담당자'는 'today-sales.txt'에 금일 매상을 'delivery-manager | {자신의 매상}'으로 기록합니다.
         try (
                 BufferedWriter bw = new BufferedWriter(new FileWriter("src/mission/outputs/today-sales.txt", true))
         ) {
@@ -86,4 +92,3 @@ public class DeliveryManager {
         }
     }
 }
-*/
