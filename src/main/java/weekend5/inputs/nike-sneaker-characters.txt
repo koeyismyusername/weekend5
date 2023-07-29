@@ -1,0 +1,10 @@
+Air Jordan 1|200000|안정성,편안함
+Air Force 1|120000|Durability,Comfort,Performance
+Air Max 90|140000|클래식함,편안함,트렌디함
+Air Max 270|180000|Trendiness
+Air Max 97|200000|트렌디함,편안함
+React Element 55|130000|Trendiness,Comfort
+Nike Dunk|140000|Stability,Trendiness
+Nike SB Dunk|140000|운동성,내구성,안정성
+Nike Cortez|100000|Classic,Comfort
+Nike Free Run|110000|편안함,운동성

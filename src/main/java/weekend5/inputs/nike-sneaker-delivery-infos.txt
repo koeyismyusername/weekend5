@@ -1,0 +1,10 @@
+Air Jordan 1|3|10000
+Air Force 1|4|10000
+Air Max 90|5|20000
+Air Max 270|5|20000
+Air Max 97|3|10000
+React Element 55|3|20000
+Nike Dunk|7|50000
+Nike SB Dunk|7|50000
+Nike Cortez|10|50000
+Nike Free Run|10|50000
